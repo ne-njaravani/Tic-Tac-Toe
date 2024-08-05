@@ -1,7 +1,11 @@
+# ---- Global Variables ----
 board = ["-", "-", "-",
          "-", "-", "-",
          "-", "-", "-",]
 
+game_still_going = True
+winner = None
+current_player = "X"
 
 def display_board():
     print(f"{board[0]} | {board[1]} | {board[2]}")
@@ -9,17 +13,25 @@ def display_board():
     print(f"{board[6]} | {board[7]} | {board[8]}")
 
 def play_game():
-    game_still_going = False
     # Display the initial board
     display_board()
 
     while game_still_going:
+
+        # Handle a single turn of an arbitrary
         handle_turn(current_player)
 
+        # Check if game has ended
         check_end_of_game()
 
+        # Flip to the other player
         flip_player()
 
+    # Game ended
+    if winner == 'X' or winner == 'O':
+        print(f"{winner} won!")
+    elif winner == None:
+        print("Tie")
 
 def handle_turn():
     position = input("Make your move. \nChoose a position from 1-9: ")
