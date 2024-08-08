@@ -30,9 +30,10 @@ def play_game():
     # Game ended
     if winner == 'X' or winner == 'O':
         print(f"{winner} won!")
-    elif winner == None:
+    elif winner is None:
         print("Tie")
 
+# Handle a single turn of an arbitrary player
 def handle_turn():
     position = input("Make your move. \nChoose a position from 1-9: ")
     position = int(position) - 1
@@ -40,16 +41,28 @@ def handle_turn():
     board[position] = "X"
 
 def check_end_of_game():
-    check_win()
-    check_tie()
+    check_for_winner()
+    check_for_tie()
 
-def check_win():
+def check_for_winner():
     # check rows
+    row_winner = check_rows()
     # check columns
+    column_winner = check_columns()
     # check diagonals
+    diagonal_winner = check_diagonals()
     return
 
-def check_tie():
+def check_rows():
+    return
+
+def check_columns():
+    return
+
+def check_diagonals():
+    return
+
+def check_for_tie():
 
     return
 
