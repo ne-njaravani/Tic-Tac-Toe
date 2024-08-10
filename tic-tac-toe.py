@@ -37,7 +37,13 @@ def play_game():
 
 # Handle a single turn of an arbitrary player
 def handle_turn(player):
+
+    print(f"{player}'s turn.")
     position = input("Make your move. \nChoose a position from 1-9: ")
+
+    while position not in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]:
+        position = input("Invalid input.\nChoose a position from 1-9")
+
     position = int(position) - 1
 
     board[position] = player
@@ -123,6 +129,9 @@ def check_diagonals():
 
 
 def check_for_tie():
+    global game_still_going
+    if "-" not in board:
+        game_still_going = False
     return
 
 
