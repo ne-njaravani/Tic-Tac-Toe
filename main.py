@@ -37,14 +37,23 @@ def play_game():
 
 # Handle a single turn of an arbitrary player
 def handle_turn(player):
-
     print(f"{player}'s turn.")
     position = input("Make your move. \nChoose a position from 1-9: ")
+    valid = False
 
-    while position not in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]:
-        position = input("Invalid input.\nChoose a position from 1-9")
+    while not valid:
 
-    position = int(position) - 1
+        while position not in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]:
+            position = input("Invalid input.\nChoose a position from 1-9")
+            display_board()
+
+        position = int(position) - 1
+
+        if board[position] == "-":
+            valid = True
+        else:
+            print("Invalid move. Space is already occupied.")
+            display_board()
 
     board[position] = player
 
@@ -124,7 +133,7 @@ def check_diagonals():
     if diagonal_1:
         return board[0]
     elif diagonal_2:
-        return board[3]
+        return board[2]
     return
 
 
